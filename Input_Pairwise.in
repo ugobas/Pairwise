@@ -1,0 +1,103 @@
+# Configuration file for Pairwise_PDB
+# Input
+FILE_STR=/data/ubastolla/PDB_DATA/pdbclusters-70.cm 
+FILE_SEQ=/data/ubastolla/PDB_DATA/pdbclusters-70.seq
+#FILE_STR=/data/ubastolla/MYPDB/pdbselect90.in
+#FILE_SEQ=/data/ubastolla/MYPDB/pdbselect90.seq
+#FILE_STR=/data/ubastolla/MYPDB/pdbselect25.in
+#FILE_SEQ=/data/ubastolla/MYPDB/pdbselect25.seq
+# Classes
+N_U=2  ! Number of classes of mean folding free energy per protein
+N_L=2  ! Number of classes of chain length per protein
+N_C=1  ! Number of classes of number of contacts per site
+#ij_bin= 4 6 8 10 15 25 35 45 60  // values of contact ranges
+#ij_bin= 1000
+#ij_bin= 4 10 30
+ij_bin= 4 8 16 30
+L_short=150
+L_long=300
+# Misfolding model
+REM=2
+TEMP=1.0
+# Global correlation matrix
+Q_GLOB=0  ! Use global correlation matrix?
+IT_GLOB=3 ! Number of iterations for opitmizing Q_GLOB
+# Optimization of Lambda
+Score=LIK RME RME dKL ! Optimized score: LIK, dKL, or RME
+Weight=3  ! Weight: 0: w=1 1: w=n=Num pairs 2: w=log(n) 3: Mut informat
+FTHR=1    ! Exclude pairs < FTHT*Na2 samples
+#INDIRECT=0
+#LAMBDA_MAX=90         ! Max. value of the selection parameter Lambda
+# For MSA
+SI_min=0.10
+SI_max=0.70
+#
+#Cont= 0   ! Compute the score with 1: C_nat=1 0: C_nat=0,1 2: All
+DIR_PDB=/ngs/databases/pdb/
+#EXT_PDB=.pdb
+
+##### Alignments
+#ALI=../MSAs_for_Ugo/1ba2_A/1ba2_A.aln.fasta
+#FILE_PDB=1ba2.list
+#ALI=../MSAs_for_Ugo/1ba3_A/1ba3_A.aln.fasta
+#FILE_PDB=1ba3.list
+#ALI=../MSAs_for_Ugo/1dz3_A/1dz3_A.aln.fasta
+#FILE_PDB=1dz3.list
+#ALI=../MSAs_for_Ugo/1ggg_A/1ggg_A.aln.fasta
+#FILE_PDB=1ggg.list
+#ALI=../MSAs_for_Ugo/1ht9_A/1ht9_A.aln.fasta
+#FILE_PDB=1ht9.list
+#ALI=../MSAs_for_Ug/1iz1_Ao/1iz1_A.aln.fasta
+#FILE_PDB=1iz1.list
+#ALI=../MSAs_for_Ugo/1t5d_X/1t5d_X.aln.fasta
+#FILE_PDB=1t5d.list
+#ALI=../MSAs_for_Ugo/1ult_A/1ult_A.aln.fasta
+#FILE_PDB=1ult.list
+#ALI=../MSAs_for_Ugo/2a38_B/2a38_B.aln.fasta
+#FILE_PDB=2a38.list
+#ALI=../MSAs_for_Ugo/2c2a_A/2c2a_A.aln.fasta
+#FILE_PDB=2c2a.list
+#ALI=../MSAs_for_Ugo/2esn_A/2esn_A.aln.fasta
+#FILE_PDB=2esn.list
+#ALI=../MSAs_for_Ugo/2j7t_A/2j7t_A.aln.fasta
+#FILE_PDB=2j7t.list
+#ALI=../MSAs_for_Ugo/2lao_A/2lao_A.aln.fasta
+#FILE_PDB=2lao.list
+#ALI=../MSAs_for_Ugo/2wrz_A/2wrz_A.aln.fasta
+#FILE_PDB=2wrz.list
+#ALI=../MSAs_for_Ugo/2y4p_B/2y4p_B.aln.fasta
+#FILE_PDB=2y4p.list
+#ALI=../MSAs_for_Ugo/3a60_B/3a60_B.aln.fasta
+#FILE_PDB=3a60.list
+#ALI=../MSAs_for_Ugo/3a9u_A/3a9u_A.aln.fasta
+#FILE_PDB=3a9u.list
+#ALI=../MSAs_for_Ugo/3asd_A/3asd_A.aln.fasta
+#FILE_PDB=3asd.list
+#ALI=../MSAs_for_Ugo/3bqr_A/3bqr_A.aln.fasta
+#FILE_PDB=3bqr.list
+#ALI=../MSAs_for_Ugo/3cg0_A/3cg0_A.aln.fasta
+#FILE_PDB=3cg0.list
+#ALI=../MSAs_for_Ugo/3fxr_B/3fxr_B.aln.fasta
+#FILE_PDB=3fxr.list
+#ALI=../MSAs_for_Ugo/3g7s_A/3g7s_A.aln.fasta
+#FILE_PDB=3g7s.list
+#ALI=../MSAs_for_Ugo/3gie_B/3gie_B.aln.fasta
+#FILE_PDB=3gie.list
+#ALI=../MSAs_for_Ugo/3gpc_A/3gpc_A.aln.fasta
+#FILE_PDB=3gpc.list
+#ALI=../MSAs_for_Ugo/3ipl_A/3ipl_A.aln.fasta
+#FILE_PDB=3ipl.list
+#ALI=../MSAs_for_Ugo/3isp_A/3isp_A.aln.fasta
+#FILE_PDB=3isp.list
+#ALI=../MSAs_for_Ugo/3k1p_A/3k1p_A.aln.fasta
+#FILE_PDB=3k1p.list
+#ALI=../MSAs_for_Ugo/3n5c_B/3n5c_B.aln.fasta
+#FILE_PDB=3n5c.list
+#ALI=../MSAs_for_Ugo/3o50_A/3o50_A.aln.fasta
+#FILE_PDB=3o50.list
+#ALI=../MSAs_for_Ugo/3rrm_A/3rrm_A.aln.fasta
+#FILE_PDB=3rrm.list
+#ALI=../MSAs_for_Ugo/3ue4_A/3ue4_A.aln.fasta
+#FILE_PDB=3ue4.list
+#ALI=../MSAs_for_Ugo/3zcc_A/3zcc_A.aln.fasta
+#FILE_PDB=3zcc.list

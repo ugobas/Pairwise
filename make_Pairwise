@@ -1,0 +1,70 @@
+#       Makefile
+#
+#       Copyright 2009 Unknown <fons@arnold.cbm.uam.es>
+#
+#       This program is free software; you can redistribute it and/or modify
+#       it under the terms of the GNU General Public License as published by
+#       the Free Software Foundation; either version 2 of the License, or
+#       (at your option) any later version.
+#
+#       This program is distributed in the hope that it will be useful,
+#       but WITHOUT ANY WARRANTY; without even the implied warranty of
+#       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#       GNU General Public License for more details.
+#
+#       You should have received a copy of the GNU General Public License
+#       along with this program; if not, write to the Free Software
+#       Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#       MA 02110-1301, USA.
+
+####################
+
+PROG=Pairwise_PDB
+
+
+# Progam files
+
+SRC= main_Pairwise_PDB.c optimization.c Pairwise_aux.c allocate.c read.c Pairwise_ali.c alignments.c NeedlemanWunsch.c Profit_aux.c sort.c random3.c
+#Codes.c 
+
+OBJ= main_Pairwise_PDB.o optimization.o Pairwise_aux.o allocate.o read.o Pairwise_ali.o alignments.o NeedlemanWunsch.o Profit_aux.o sort.o random3.o
+#Codes.o 
+
+# Compiler flags
+CC=gcc
+# CFLAGS= -O2
+CFLAGS= -Wall -std=c99 -pedantic -g -pg -fbounds-check -D_FILE_OFFSET_BITS=64 -D_LARGE_FILE_SOURCE
+LDFLAGS=-lm -lg2c
+LDFLAGS=-lm -L/usr/lib64/libg2c.so.0.0.0
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(PROG) $(LDFLAGS)
+
+gnu: CC=gcc
+gnu: LDFLAGS=-lm -lg2c
+gnu: CFLAGS=-Wall -O3 -march=nocona -D_FILE_OFFSET_BITS=64 -D_LARGE_FILE_SOURCE
+gnu: all
+
+gnu-static: CC=gcc
+gnu-static: LDFLAGS=-lm -lg2c -static
+gnu-static: CFLAGS=-Wall -O3 -march=nocona -D_FILE_OFFSET_BITS=64 -D_LARGE_FILE_SOURCE
+gnu-static: all
+
+intel: CC=icc
+intel: LDFLAGS=-lm
+intel: CFLAGS=-Wall -static -O3 -xHOST -ipo -D_FILE_OFFSET_BITS=64 -D_LARGE_FILE_SOURCE -vec-report
+intel: all
+
+intel-static: CC=icc
+intel-static: LDFLAGS=-lm -static
+intel-static: CFLAGS=-Wall -static -O3 -xHOST -ipo -D_FILE_OFFSET_BITS=64 -D_LARGE_FILE_SOURCE -vec-report
+intel-static: all
+
+
+
+
+%.o: %.cpp
+	$(CC) $(LDFLAGS) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -fr $(OBJ) $(PROG)
